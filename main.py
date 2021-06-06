@@ -2,9 +2,9 @@ from PySide2.QtWidgets import *
 import sys
 
 
-class JanelaPrincipal(QMainWindow):
+class MainWindow(QMainWindow):
     def __init__(self, *args, **kwargs):
-        super(JanelaPrincipal, self).__init__(*args, **kwargs)
+        super(MainWindow, self).__init__(*args, **kwargs)
         self.setWindowTitle("Controle de Estoque")
         self.setMinimumSize(600, 400)
 
@@ -14,7 +14,7 @@ class JanelaPrincipal(QMainWindow):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    j = JanelaPrincipal()
+    j = MainWindow()
     j.abrir()
 
     sys.exit(app.exec_())
