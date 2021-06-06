@@ -1,0 +1,23 @@
+Primeiro passo é definir o formato das classes, funções, objetos e variaveis.
+    CLASSE => todas as letras devem vir em caixa alta (JANELA)
+    funcoo => todas as letras devem vir em caixa baixa (abrir)
+    Objeto => a primeira letra de uma palavra deve vir em caixa alta (CaixaTexto)
+    var_variavel => deve vir acompanhada do prefixo 'var' e separada com '_' (var_numero)
+
+estruturação do codigo:
+JANELA => QMainWindow
+    CentroJanela => QWidget
+        LVJanela => QVBoxLayout
+            FrameBotoes => QFrame
+            LHBotoes => QHBoxLayout
+                BotaoAdicionar => QPushButton
+                BotaoEditar => QPushButton
+                BotaoExcluir => QPushButton
+                BotaoPesquisar => QPushButton
+            Paginas => QStackedWidget
+                PaginaInicial => QWidget
+                PaginaAdiconar => QWidget
+                PaginaEditar => QWidget
+                PaginaExcluir => QWidget
+                PaginaPesquisar => QWidget
+
