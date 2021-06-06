@@ -37,7 +37,7 @@ class JANELA(QMainWindow):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    j = JANELA()
-    j.abrir()
+    jan = JANELA()
+    jan.abrir()
 
     sys.exit(app.exec_())
