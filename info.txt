@@ -24,7 +24,12 @@ JANELA => QMainWindow
 
 
 INICIO => QMainWindow
-    CentroJanela => QWidget
-	
+    CentroInicio => QWidget
+        LGInicio => QGridLayout
+            TabelaInicio => QTableWidget
 
 
+ADICIONAR => QMainWindow
+    CentroAdicionar => QWidget
+        LGAdicionar => QGridLayout
+        
