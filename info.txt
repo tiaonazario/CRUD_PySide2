@@ -21,3 +21,10 @@ JANELA => QMainWindow
                 PaginaExcluir => QWidget
                 PaginaPesquisar => QWidget
 
+
+
+INICIO => QMainWindow
+    CentroJanela => QWidget
+	
+
+
