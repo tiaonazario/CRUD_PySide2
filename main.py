@@ -1,10 +1,10 @@
-from PySide6.QtWidgets import *
+from PySide2.QtWidgets import *
 import sys
 
 
 class JanelaPrincipal(QMainWindow):
     def __init__(self, *args, **kwargs):
-        super(JanelaPrincipal, self).__init__(args, **kwargs)
+        super(JanelaPrincipal, self).__init__(*args, **kwargs)
         self.setWindowTitle("Controle de Estoque")
         self.setMinimumSize(600, 400)
 
