@@ -1,4 +1,7 @@
+from modulo.personalizar import pushbutton
 from PySide2.QtWidgets import *
+from PySide2.QtCore import *
+from PySide2.QtGui import *
 import sys
 
 
@@ -18,11 +21,13 @@ class JANELA(QMainWindow):
         self.FrameBotoes.setLayout(self.LHBotoes)
         self.LVJanela.addWidget(self.FrameBotoes)
         # Botões
-        self.BotaoAdicionar = QPushButton("Adicionar", self)
-        self.BotaoEditar = QPushButton("Editar", self)
-        self.BotaoExcluir = QPushButton("Excluir", self)
-        self.BotaoPesquisar = QPushButton("Pesquisar", self)
+        self.BotaoInicio = QPushButton(self)
+        self.BotaoAdicionar = QPushButton(self)
+        self.BotaoEditar = QPushButton(self)
+        self.BotaoExcluir = QPushButton(self)
+        self.BotaoPesquisar = QPushButton(self)
         # Colocar os botões no layout horizontal (LHBotoes)
+        self.LHBotoes.addWidget(self.BotaoInicio)
         self.LHBotoes.addWidget(self.BotaoAdicionar)
         self.LHBotoes.addWidget(self.BotaoEditar)
         self.LHBotoes.addWidget(self.BotaoExcluir)
@@ -31,13 +36,20 @@ class JANELA(QMainWindow):
         self.Paginas = QStackedWidget(self)
         self.LVJanela.addWidget(self.Paginas)
 
-    def abrir(self):
-        self.show()
+        # funções do programa
+        self.formatar()
+
+    def formatar(self):
+        pushbutton(self.BotaoInicio)
+        pushbutton(self.BotaoAdicionar, 'imagens/adicionar.svg')
+        pushbutton(self.BotaoEditar)
+        pushbutton(self.BotaoExcluir)
+        pushbutton(self.BotaoPesquisar)
 
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     jan = JANELA()
-    jan.abrir()
+    jan.show()
 
     sys.exit(app.exec_())
