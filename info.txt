@@ -46,10 +46,10 @@ ADICIONAR => QMainWindow
             RotuloData => QLabel
             BotaoSalvar => QPushButton
             CTProduto => QTextEdit
-            CTProduto => QTextEdit
-            CTProduto => QTextEdit
-            CTProduto => QTextEdit
-            CTProduto => QTextEdit
+            CTQuantidade => QTextEdit
+            CTTipo => QTextEdit
+            CTValor => QTextEdit
+            CTData => QTextEdit
             BotaoLimpar => QPushButton
 
 

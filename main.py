@@ -1,3 +1,4 @@
+from paginas.inicio import INICIO
 from biblioteca.personalizar import *
 from PySide2.QtWidgets import *
 from PySide2.QtCore import *
@@ -12,14 +13,13 @@ class JANELA(QMainWindow):
         self.setMinimumSize(600, 400)  # dimensões da janela
         self.CentroJanela = QWidget(self)  # criar uma ferramenta central
         self.setCentralWidget(self.CentroJanela)  # atribuir a Janela
-
-        self.LVJanela = QVBoxLayout(self)
-        self.CentroJanela.setLayout(self.LVJanela)
+        self.LGJanela = QGridLayout(self)
+        self.CentroJanela.setLayout(self.LGJanela)
 
         self.FrameBotoes = QFrame(self)
         self.LHBotoes = QHBoxLayout(self)
         self.FrameBotoes.setLayout(self.LHBotoes)
-        self.LVJanela.addWidget(self.FrameBotoes)
+        self.LGJanela.addWidget(self.FrameBotoes, 0, 1, 1, 1)
         # Botões
         self.BotaoInicio = QPushButton(self)
         self.BotaoAdicionar = QPushButton(self)
@@ -36,19 +36,29 @@ class JANELA(QMainWindow):
         self.LHBotoes.addWidget(self.CTPesquisa)
         # Paginas
         self.Paginas = QStackedWidget(self)
-        self.LVJanela.addWidget(self.Paginas)
-
+        self.LGJanela.addWidget(self.Paginas, 1, 0, 1, 3)
+        # carregar as paginas: INICIO, ADICIONAR, EDITAR
+        self.PaginaInicio = INICIO()
+        self.Paginas.addWidget(self.PaginaInicio.CentroInicio)
         # funções do programa
         self.formatar()
 
     def formatar(self):
-        layout(self.LVJanela)
+        widget(self.CentroJanela)
+        layout(self.LGJanela)
         frame(self.FrameBotoes, (500, 60))
-        pushbutton(self.BotaoInicio, 'imagens/svg/inicio.svg')
-        pushbutton(self.BotaoAdicionar, 'imagens/svg/adicionar.svg')
-        pushbutton(self.BotaoEditar, 'imagens/svg/editar.svg')
-        pushbutton(self.BotaoExcluir, 'imagens/svg/excluir.svg')
-        pushbutton(self.BotaoPesquisar, 'imagens/svg/pesquisar.svg')
+        pushbutton(self.BotaoInicio, 'imagens/svg/inicio.svg', (40, 40))
+        pushbutton(self.BotaoAdicionar, 'imagens/svg/adicionar.svg', (40, 40))
+        pushbutton(self.BotaoEditar, 'imagens/svg/editar.svg', (40, 40))
+        pushbutton(self.BotaoExcluir, 'imagens/svg/excluir.svg', (40, 40))
+        pushbutton(self.BotaoPesquisar, 'imagens/svg/pesquisar.svg', (40, 40))
+        textedit(self.CTPesquisa, (250, 30))
+
+    def selpagina(self, indice=0):
+        self.Paginas.setCurrentIndex(indice)
+
+    def clique(self):
+        self.BotaoInicio.clicked(lambda: self.selpagina(0))
 
 
 if __name__ == '__main__':
