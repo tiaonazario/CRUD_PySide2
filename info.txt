@@ -10,6 +10,7 @@ JANELA => QMainWindow
         LVJanela => QVBoxLayout
             FrameBotoes => QFrame
             LHBotoes => QHBoxLayout
+		BotaoInicio => QPushButton
                 BotaoAdicionar => QPushButton
                 BotaoEditar => QPushButton
                 BotaoExcluir => QPushButton
