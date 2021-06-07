@@ -35,12 +35,9 @@
    <property name="styleSheet">
     <string notr="true">background-color: rgb(27, 27, 27);
 color: rgb(222, 222, 222);
-font: 12pt &quot;MS Sans Serif&quot;;</string>
+</string>
    </property>
-   <layout class="QVBoxLayout" name="LVJanela">
-    <property name="spacing">
-     <number>0</number>
-    </property>
+   <layout class="QGridLayout" name="gridLayout">
     <property name="leftMargin">
      <number>0</number>
     </property>
@@ -53,7 +50,25 @@ font: 12pt &quot;MS Sans Serif&quot;;</string>
     <property name="bottomMargin">
      <number>0</number>
     </property>
-    <item>
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <item row="1" column="0">
+     <widget class="QStackedWidget" name="Paginas">
+      <property name="lineWidth">
+       <number>3</number>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="PaginaInicial"/>
+      <widget class="QWidget" name="PaginaAdicionar"/>
+      <widget class="QWidget" name="PaginaEditar"/>
+      <widget class="QWidget" name="PaginaExcluir"/>
+      <widget class="QWidget" name="PaginaPesquisar"/>
+     </widget>
+    </item>
+    <item row="0" column="0">
      <widget class="QFrame" name="FrameBotoes">
       <property name="minimumSize">
        <size>
@@ -63,7 +78,7 @@ font: 12pt &quot;MS Sans Serif&quot;;</string>
       </property>
       <property name="maximumSize">
        <size>
-        <width>16777215</width>
+        <width>550</width>
         <height>60</height>
        </size>
       </property>
@@ -84,6 +99,12 @@ font: 12pt &quot;MS Sans Serif&quot;;</string>
       </property>
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
+      </property>
+      <property name="lineWidth">
+       <number>1</number>
+      </property>
+      <property name="midLineWidth">
+       <number>0</number>
       </property>
       <layout class="QHBoxLayout" name="LHBotoes">
        <property name="spacing">
@@ -306,19 +327,29 @@ font: 12pt &quot;MS Sans Serif&quot;;</string>
          </property>
         </widget>
        </item>
+       <item>
+        <widget class="QTextEdit" name="CTPesquisa">
+         <property name="minimumSize">
+          <size>
+           <width>250</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>250</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>MS Sans Serif</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+        </widget>
+       </item>
       </layout>
-     </widget>
-    </item>
-    <item>
-     <widget class="QStackedWidget" name="Paginas">
-      <property name="currentIndex">
-       <number>4</number>
-      </property>
-      <widget class="QWidget" name="PaginaInicial"/>
-      <widget class="QWidget" name="PaginaAdicionar"/>
-      <widget class="QWidget" name="PaginaEditar"/>
-      <widget class="QWidget" name="PaginaExcluir"/>
-      <widget class="QWidget" name="PaginaPesquisar"/>
      </widget>
     </item>
    </layout>

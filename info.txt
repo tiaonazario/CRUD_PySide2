@@ -4,33 +4,70 @@ Primeiro passo é definir o formato das classes, funções, objetos e variaveis.
     Objeto => a primeira letra de uma palavra deve vir em caixa alta (CaixaTexto)
     var_variavel => deve vir acompanhada do prefixo 'var' e separada com '_' (var_numero)
 
-estruturação do codigo:
+ === === === === Estruturação do codigo: === === === === 
 JANELA => QMainWindow
     CentroJanela => QWidget
-        LVJanela => QVBoxLayout
-            FrameBotoes => QFrame
-            LHBotoes => QHBoxLayout
-		BotaoInicio => QPushButton
-                BotaoAdicionar => QPushButton
-                BotaoEditar => QPushButton
-                BotaoExcluir => QPushButton
-                BotaoPesquisar => QPushButton
-            Paginas => QStackedWidget
-                PaginaInicial => QWidget
-                PaginaAdiconar => QWidget
-                PaginaEditar => QWidget
-                PaginaExcluir => QWidget
-                PaginaPesquisar => QWidget
+    LGJanela => QGridLayout
+        FrameBotoes => QFrame
+        LHBotoes => QHBoxLayout
+		    BotaoInicio => QPushButton
+            BotaoAdicionar => QPushButton
+            BotaoEditar => QPushButton
+            BotaoExcluir => QPushButton
+            BotaoPesquisar => QPushButton
+            CTPesquisa => QTextEdit
 
+        Paginas => QStackedWidget
+            PaginaInicial => QWidget
+            PaginaAdiconar => QWidget
+            PaginaEditar => QWidget
+            PaginaExcluir => QWidget
+            PaginaPesquisar => QWidget
 
 
 INICIO => QMainWindow
     CentroInicio => QWidget
-        LGInicio => QGridLayout
+    LHInicio => QHBoxLayout
+        FrameTabela => QFrame
+        LVTabela => QVBoxLayout
             TabelaInicio => QTableWidget
 
 
 ADICIONAR => QMainWindow
     CentroAdicionar => QWidget
-        LGAdicionar => QGridLayout
-        
+    LHAdicionar => QHBoxLayout
+        FrameCampos => QFrame
+        LGCampos => QGridLayout
+            RotuloAdicionar => QLabel
+            RotuloProduto => QLabel
+            RotuloQuantidade => QLabel
+            RotuloTipo => QLabel
+            RotuloValor => QLabel
+            RotuloData => QLabel
+            BotaoSalvar => QPushButton
+            CTProduto => QTextEdit
+            CTProduto => QTextEdit
+            CTProduto => QTextEdit
+            CTProduto => QTextEdit
+            CTProduto => QTextEdit
+            BotaoLimpar => QPushButton
+
+
+EDITAR => QMainWindow
+    CentroEditar => QWidget
+    LHEditar => QHBoxLayout
+        FrameCampos => QFrame
+        LGCampos => QGridLayout
+            RotuloEditar => QLabel
+            RotuloProduto => QLabel
+            RotuloQuantidade => QLabel
+            RotuloTipo => QLabel
+            RotuloValor => QLabel
+            RotuloData => QLabel
+            BotaoSalvar => QPushButton
+            CTProduto => QTextEdit
+            CTProduto => QTextEdit
+            CTProduto => QTextEdit
+            CTProduto => QTextEdit
+            CTProduto => QTextEdit
+            BotaoLimpar => QPushButton
