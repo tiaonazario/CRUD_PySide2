@@ -1,4 +1,6 @@
-from paginas.inicio import *
+from inicio import *
+from adicionar import *
+from editar import *
 from biblioteca import *
 from PySide2.QtWidgets import *
 from PySide2.QtCore import *
@@ -39,9 +41,14 @@ class JANELA(QMainWindow):
         self.LayoutQuadro.addWidget(self.Paginas, 1, 0, 1, 6)
         # carregar as paginas: INICIO, ADICIONAR, EDITAR
         self.PaginaInicio = INICIO()
+        self.PaginaAdicionar = ADICIONAR()
+        self.PaginaEditar = EDITAR()
         self.Paginas.addWidget(self.PaginaInicio.CentroInicio)
+        self.Paginas.addWidget(self.PaginaAdicionar.CentroAdicionar)
+        self.Paginas.addWidget(self.PaginaEditar.CentroEditar)
         # funções do programa
         self.formatar()
+        self.clique()
 
     def formatar(self):
         widget(self.CentroJanela)
@@ -59,7 +66,9 @@ class JANELA(QMainWindow):
         self.Paginas.setCurrentIndex(indice)
 
     def clique(self):
-        self.BotaoInicio.clicked(lambda: self.selpagina(0))
+        self.BotaoInicio.clicked.connect(lambda: self.selpagina(0))
+        self.BotaoAdicionar.clicked.connect(lambda: self.selpagina(1))
+        self.BotaoEditar.clicked.connect(lambda: self.selpagina(2))
 
 
 if __name__ == '__main__':

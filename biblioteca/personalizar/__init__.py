@@ -5,12 +5,13 @@ from PySide2.QtWidgets import *
 # tam = (0, 3000)  # tamanho (minimo, maximo)
 
 
-def estilo(corfundo='#262626'):
-    formato = f'''background-color: {corfundo}; color: ; font: MS Sans Serif; font-size: 12pt'''
+def estilo(corfundo='#262626', cor='#ffffff', fonte='bold MS Sans Serif', tamanho='12pt'):
+    formato = f'''background-color: {corfundo}; color: {cor}; font: {fonte};
+    font-size: {tamanho}'''
     return formato
 
 
-def widget(nome, fonte=estilo):
+def widget(nome, fonte=estilo()):
     nome.setStyleSheet(fonte)
 
 
@@ -39,8 +40,10 @@ def pushbutton(nome, icone='', tamfixo=''):
         nome.setIcon(QIcon(icone))
 
 
-def label(nome, tamfixo='', tamfixolarg='', tamfixoalt=''):
-    nome.setStyleSheet()
+def label(nome, tamfixo='', tamfixolarg='', tamfixoalt='', alinhar=''):
+    # nome.setStyleSheet(fonte)
+    if alinhar != '':
+        nome.setAlignment(alinhar)
     if tamfixo != '':
         nome.setFixedSize(tamfixo[0], tamfixo[1])
     if tamfixolarg != '':
@@ -50,5 +53,10 @@ def label(nome, tamfixo='', tamfixolarg='', tamfixoalt=''):
 
 
 def textedit(nome, tamfixo=''):
+    if tamfixo != '':
+        nome.setFixedSize(tamfixo[0], tamfixo[1])
+
+
+def combobox(nome, tamfixo=''):
     if tamfixo != '':
         nome.setFixedSize(tamfixo[0], tamfixo[1])

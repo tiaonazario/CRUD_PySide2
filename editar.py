@@ -3,20 +3,20 @@ from biblioteca import *
 import sys
 
 
-class ADICIONAR(QMainWindow):
+class EDITAR(QMainWindow):
     def __init__(self, *args, **kwargs):
-        super(ADICIONAR, self).__init__(*args, **kwargs)
-        self.CentroAdicionar = QWidget(self)
-        self.setCentralWidget(self.CentroAdicionar)
-        self.LayoutAdicionar = QGridLayout(self)
-        self.CentroAdicionar.setLayout(self.LayoutAdicionar)
+        super(EDITAR, self).__init__(*args, **kwargs)
+        self.CentroEditar = QWidget(self)
+        self.setCentralWidget(self.CentroEditar)
+        self.LayoutEditar = QGridLayout(self)
+        self.CentroEditar.setLayout(self.LayoutEditar)
 
         self.Quadro = QFrame(self)
         self.LayoutQuadro = QGridLayout(self)
         self.Quadro.setLayout(self.LayoutQuadro)
-        self.LayoutAdicionar.addWidget(self.Quadro)
+        self.LayoutEditar.addWidget(self.Quadro)
 
-        self.RotuloAdicionar = QLabel('ADICIONAR', self)
+        self.RotuloEditar = QLabel('EDITAR', self)
         self.RotuloProduto = QLabel('Produto', self)
         self.RotuloQuantidade = QLabel('Quantidade', self)
         self.RotuloTipo = QLabel('Tipo', self)
@@ -24,7 +24,7 @@ class ADICIONAR(QMainWindow):
         self.RotuloData = QLabel('Data', self)
         self.BotaoSalvar = QPushButton('Salvar', self)
 
-        self.LayoutQuadro.addWidget(self.RotuloAdicionar, 0, 0, 1, 2)
+        self.LayoutQuadro.addWidget(self.RotuloEditar, 0, 0, 1, 2)
         self.LayoutQuadro.addWidget(self.RotuloProduto, 1, 0, 1, 1)
         self.LayoutQuadro.addWidget(self.RotuloQuantidade, 2, 0, 1, 1)
         self.LayoutQuadro.addWidget(self.RotuloTipo, 3, 0, 1, 1)
@@ -49,9 +49,9 @@ class ADICIONAR(QMainWindow):
         self.formatar()
 
     def formatar(self):
-        widget(self.CentroAdicionar)
+        widget(self.CentroEditar)
         frame(self.Quadro, tamfixo=(400, 400))
-        label(self.RotuloAdicionar, tamfixoalt=60, alinhar=Qt.AlignCenter)
+        label(self.RotuloEditar, tamfixoalt=60, alinhar=Qt.AlignCenter)
         textedit(self.CTProduto, (250, 30))
         textedit(self.CTQuantidade, (250, 30))
         combobox(self.CBTipo, (250, 30))
@@ -63,6 +63,6 @@ class ADICIONAR(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    jan = ADICIONAR()
+    jan = EDITAR()
     jan.show()
     sys.exit(app.exec_())
