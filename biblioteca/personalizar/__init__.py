@@ -3,7 +3,11 @@ from PySide2.QtGui import *
 from PySide2.QtWidgets import *
 
 # tam = (0, 3000)  # tamanho (minimo, maximo)
-estilo = '''background-color: #262626; color: #ffffff; font: MS Sans Serif; font-size: 12pt'''
+
+
+def estilo(corfundo='#262626'):
+    formato = f'''background-color: {corfundo}; color: ; font: MS Sans Serif; font-size: 12pt'''
+    return formato
 
 
 def widget(nome, fonte=estilo):
@@ -35,9 +39,14 @@ def pushbutton(nome, icone='', tamfixo=''):
         nome.setIcon(QIcon(icone))
 
 
-def label(nome, tamfixo=''):
+def label(nome, tamfixo='', tamfixolarg='', tamfixoalt=''):
+    nome.setStyleSheet()
     if tamfixo != '':
         nome.setFixedSize(tamfixo[0], tamfixo[1])
+    if tamfixolarg != '':
+        nome.setFixedWidth(tamfixolarg)
+    if tamfixoalt != '':
+        nome.setFixedHeight(tamfixoalt)
 
 
 def textedit(nome, tamfixo=''):

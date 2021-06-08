@@ -46,10 +46,11 @@ class ADICIONAR(QMainWindow):
         self.LayoutQuadro.addWidget(self.CTData, 5, 1, 1, 1)
         self.LayoutQuadro.addWidget(self.BotaoLimpar, 6, 1, 1, 1)
 
-        # self.formatar()
+        self.formatar()
 
     def formatar(self):
-        frame(self.Quadro, tamfixolarg=500)
+        frame(self.Quadro, tamfixo=(500, 400))
+        label(self.RotuloAdicionar, tamfixoalt=60)
         textedit(self.CTProduto, (250, 30))
         textedit(self.CTQuantidade, (250, 30))
         textedit(self.CTValor, (250, 30))
