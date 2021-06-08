@@ -18,9 +18,13 @@ def layout(nome, margem=0, espaco=0):
     nome.setSpacing(espaco)
 
 
-def frame(nome, tamfixo=''):
+def frame(nome, tamfixo='', tamfixolarg='', tamfixoalt=''):
     if tamfixo != '':
         nome.setFixedSize(tamfixo[0], tamfixo[1])
+    if tamfixolarg != '':
+        nome.setFixedWidth(tamfixolarg)
+    if tamfixoalt != '':
+        nome.setFixedHeight(tamfixoalt)
 
 
 def pushbutton(nome, icone='', tamfixo=''):

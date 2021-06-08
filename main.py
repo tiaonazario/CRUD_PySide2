@@ -1,5 +1,5 @@
-from paginas.inicio import INICIO
-from biblioteca.personalizar import *
+from paginas.inicio import *
+from biblioteca import *
 from PySide2.QtWidgets import *
 from PySide2.QtCore import *
 from PySide2.QtGui import *
@@ -13,13 +13,13 @@ class JANELA(QMainWindow):
         self.setMinimumSize(600, 400)  # dimensões da janela
         self.CentroJanela = QWidget(self)  # criar uma ferramenta central
         self.setCentralWidget(self.CentroJanela)  # atribuir a Janela
-        self.LGJanela = QGridLayout(self)
-        self.CentroJanela.setLayout(self.LGJanela)
+        self.LayoutJanela = QGridLayout(self)
+        self.CentroJanela.setLayout(self.LayoutJanela)
 
-        self.FrameBotoes = QFrame(self)
-        self.LHBotoes = QHBoxLayout(self)
-        self.FrameBotoes.setLayout(self.LHBotoes)
-        self.LGJanela.addWidget(self.FrameBotoes, 0, 1, 1, 1)
+        self.Quadro = QFrame(self)
+        self.LayoutQuadro = QGridLayout(self)
+        self.Quadro.setLayout(self.LayoutQuadro)
+        self.LayoutJanela.addWidget(self.Quadro)
         # Botões
         self.BotaoInicio = QPushButton(self)
         self.BotaoAdicionar = QPushButton(self)
@@ -27,16 +27,16 @@ class JANELA(QMainWindow):
         self.BotaoExcluir = QPushButton(self)
         self.BotaoPesquisar = QPushButton(self)
         self.CTPesquisa = QTextEdit(self)
-        # Colocar os componentes no layout horizontal (LHBotoes)
-        self.LHBotoes.addWidget(self.BotaoInicio)
-        self.LHBotoes.addWidget(self.BotaoAdicionar)
-        self.LHBotoes.addWidget(self.BotaoEditar)
-        self.LHBotoes.addWidget(self.BotaoExcluir)
-        self.LHBotoes.addWidget(self.BotaoPesquisar)
-        self.LHBotoes.addWidget(self.CTPesquisa)
+        # Colocar os componentes no LayoutQuadro
+        self.LayoutQuadro.addWidget(self.BotaoInicio, 0, 0, 1, 1)
+        self.LayoutQuadro.addWidget(self.BotaoAdicionar, 0, 1, 1, 1)
+        self.LayoutQuadro.addWidget(self.BotaoEditar, 0, 2, 1, 1)
+        self.LayoutQuadro.addWidget(self.BotaoExcluir, 0, 3, 1, 1)
+        self.LayoutQuadro.addWidget(self.BotaoPesquisar, 0, 4, 1, 1)
+        self.LayoutQuadro.addWidget(self.CTPesquisa, 0, 5, 1, 1)
         # Paginas
         self.Paginas = QStackedWidget(self)
-        self.LGJanela.addWidget(self.Paginas, 1, 0, 1, 3)
+        self.LayoutQuadro.addWidget(self.Paginas, 1, 0, 1, 6)
         # carregar as paginas: INICIO, ADICIONAR, EDITAR
         self.PaginaInicio = INICIO()
         self.Paginas.addWidget(self.PaginaInicio.CentroInicio)
@@ -45,8 +45,9 @@ class JANELA(QMainWindow):
 
     def formatar(self):
         widget(self.CentroJanela)
-        layout(self.LGJanela)
-        frame(self.FrameBotoes, (500, 60))
+        # layout(self.LayoutJanela)
+        # layout(self.LayoutQuadro)
+        frame(self.Quadro, tamfixolarg=500)
         pushbutton(self.BotaoInicio, 'imagens/svg/inicio.svg', (40, 40))
         pushbutton(self.BotaoAdicionar, 'imagens/svg/adicionar.svg', (40, 40))
         pushbutton(self.BotaoEditar, 'imagens/svg/editar.svg', (40, 40))
