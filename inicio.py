@@ -1,17 +1,19 @@
-from PySide2.QtWidgets import *
+from PySide2.QtWidgets import QMainWindow, QWidget, QGridLayout, QTableWidget, QApplication
 import sys
 
 
 class INICIO(QMainWindow):
     def __init__(self, *args, **kwargs):
         super(INICIO, self).__init__(*args, **kwargs)
+
+        # === === === CORPO === === ===
         self.CentroInicio = QWidget(self)
         self.setCentralWidget(self.CentroInicio)
-        self.LGInicio = QGridLayout(self)
-        self.CentroInicio.setLayout(self.LGInicio)
+        self.LayoutCentroInicio = QGridLayout(self)
+        self.CentroInicio.setLayout(self.LayoutCentroInicio)
 
         self.TabelaInicio = QTableWidget(self)
-        self.LGInicio.addWidget(self.TabelaInicio, 0, 1, 1, 1)
+        self.LayoutCentroInicio.addWidget(self.TabelaInicio, 0, 1, 1, 1)
 
 
 if __name__ == "__main__":

@@ -6,16 +6,14 @@ import sys
 class ADICIONAR(QMainWindow):
     def __init__(self, *args, **kwargs):
         super(ADICIONAR, self).__init__(*args, **kwargs)
+
+        # === === === CORPO === === ===
         self.CentroAdicionar = QWidget(self)
         self.setCentralWidget(self.CentroAdicionar)
-        self.LayoutAdicionar = QGridLayout(self)
-        self.CentroAdicionar.setLayout(self.LayoutAdicionar)
+        self.LayoutCentroAdicionar = QGridLayout(self)
+        self.CentroAdicionar.setLayout(self.LayoutCentroAdicionar)
 
-        self.Quadro = QFrame(self)
-        self.LayoutQuadro = QGridLayout(self)
-        self.Quadro.setLayout(self.LayoutQuadro)
-        self.LayoutAdicionar.addWidget(self.Quadro)
-
+        # => Rotulos das labels
         self.RotuloAdicionar = QLabel('ADICIONAR', self)
         self.RotuloProduto = QLabel('Produto', self)
         self.RotuloQuantidade = QLabel('Quantidade', self)
@@ -23,34 +21,34 @@ class ADICIONAR(QMainWindow):
         self.RotuloValor = QLabel('Valor', self)
         self.RotuloData = QLabel('Data', self)
         self.BotaoSalvar = QPushButton('Salvar', self)
+        # Colocar os componentes no LayoutCentroAdicionar
+        self.LayoutCentroAdicionar.addWidget(self.RotuloAdicionar, 0, 0, 1, 2)
+        self.LayoutCentroAdicionar.addWidget(self.RotuloProduto, 1, 0, 1, 1)
+        self.LayoutCentroAdicionar.addWidget(self.RotuloQuantidade, 2, 0, 1, 1)
+        self.LayoutCentroAdicionar.addWidget(self.RotuloTipo, 3, 0, 1, 1)
+        self.LayoutCentroAdicionar.addWidget(self.RotuloValor, 4, 0, 1, 1)
+        self.LayoutCentroAdicionar.addWidget(self.RotuloData, 5, 0, 1, 1)
+        self.LayoutCentroAdicionar.addWidget(self.BotaoSalvar, 6, 0, 1, 1)
 
-        self.LayoutQuadro.addWidget(self.RotuloAdicionar, 0, 0, 1, 2)
-        self.LayoutQuadro.addWidget(self.RotuloProduto, 1, 0, 1, 1)
-        self.LayoutQuadro.addWidget(self.RotuloQuantidade, 2, 0, 1, 1)
-        self.LayoutQuadro.addWidget(self.RotuloTipo, 3, 0, 1, 1)
-        self.LayoutQuadro.addWidget(self.RotuloValor, 4, 0, 1, 1)
-        self.LayoutQuadro.addWidget(self.RotuloData, 5, 0, 1, 1)
-        self.LayoutQuadro.addWidget(self.BotaoSalvar, 6, 0, 1, 1)
-
+        # => Caixas de texto e listas
         self.CTProduto = QTextEdit(self)
         self.CTQuantidade = QTextEdit(self)
         self.CBTipo = QComboBox(self)
         self.CTValor = QTextEdit(self)
         self.CTData = QTextEdit(self)
         self.BotaoLimpar = QPushButton('Limpar', self)
-
-        self.LayoutQuadro.addWidget(self.CTProduto, 1, 1, 1, 1)
-        self.LayoutQuadro.addWidget(self.CTQuantidade, 2, 1, 1, 1)
-        self.LayoutQuadro.addWidget(self.CBTipo, 3, 1, 1, 1)
-        self.LayoutQuadro.addWidget(self.CTValor, 4, 1, 1, 1)
-        self.LayoutQuadro.addWidget(self.CTData, 5, 1, 1, 1)
-        self.LayoutQuadro.addWidget(self.BotaoLimpar, 6, 1, 1, 1)
+        # Colocar os componentes no LayoutCentroAdicionar
+        self.LayoutCentroAdicionar.addWidget(self.CTProduto, 1, 1, 1, 1)
+        self.LayoutCentroAdicionar.addWidget(self.CTQuantidade, 2, 1, 1, 1)
+        self.LayoutCentroAdicionar.addWidget(self.CBTipo, 3, 1, 1, 1)
+        self.LayoutCentroAdicionar.addWidget(self.CTValor, 4, 1, 1, 1)
+        self.LayoutCentroAdicionar.addWidget(self.CTData, 5, 1, 1, 1)
+        self.LayoutCentroAdicionar.addWidget(self.BotaoLimpar, 6, 1, 1, 1)
 
         self.formatar()
 
     def formatar(self):
         widget(self.CentroAdicionar)
-        frame(self.Quadro, tamfixo=(400, 400))
         label(self.RotuloAdicionar, tamfixoalt=60, alinhar=Qt.AlignCenter)
         textedit(self.CTProduto, (250, 30))
         textedit(self.CTQuantidade, (250, 30))

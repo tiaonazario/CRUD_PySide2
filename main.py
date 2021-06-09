@@ -1,28 +1,31 @@
-from inicio import *
-from adicionar import *
-from editar import *
-from biblioteca import *
-from PySide2.QtWidgets import *
-from PySide2.QtCore import *
-from PySide2.QtGui import *
+from PySide2.QtWidgets import QMainWindow, QWidget, QGridLayout, QFrame, QPushButton, QTextEdit, QStackedWidget, QApplication
 import sys
+from biblioteca import *
+from inicio import INICIO
+from adicionar import ADICIONAR
+from editar import EDITAR
 
 
-class JANELA(QMainWindow):
+class PRINCIPAL(QMainWindow):
     def __init__(self, *args, **kwargs):
-        super(JANELA, self).__init__(*args, **kwargs)
-        self.setWindowTitle("Controle de Estoque")  # Titulo da janela
-        self.setMinimumSize(600, 400)  # dimensões da janela
-        self.CentroJanela = QWidget(self)  # criar uma ferramenta central
-        self.setCentralWidget(self.CentroJanela)  # atribuir a Janela
-        self.LayoutJanela = QGridLayout(self)
-        self.CentroJanela.setLayout(self.LayoutJanela)
+        super(PRINCIPAL, self).__init__(*args, **kwargs)
+        self.setWindowTitle('Controle de Estoque')  # titulo
+        self.setMinimumSize(500, 400)  # menores dimensões
 
+        # === === === CORPO DO SOFTWARE === === ===
+        self.CentroPrincipal = QWidget(self)  # ferramenta central
+        self.setCentralWidget(self.CentroPrincipal)  # definir
+        self.LayoutCentroPrincipal = QGridLayout(self)  # plano responsivo
+        self.CentroPrincipal.setLayout(self.LayoutCentroPrincipal)  # definir
+
+        # => Quadro que recebe tudo
         self.Quadro = QFrame(self)
-        self.LayoutQuadro = QGridLayout(self)
+        self.LayoutQuadro = QGridLayout(self)  # plano responsivo
         self.Quadro.setLayout(self.LayoutQuadro)
-        self.LayoutJanela.addWidget(self.Quadro)
-        # Botões
+        # adicionar o 'Quadro' no  a ferramenta 'LayoutCentroPrincipal'
+        self.LayoutCentroPrincipal.addWidget(self.Quadro)
+
+        # => Botões e caixa de pesquisa
         self.BotaoInicio = QPushButton(self)
         self.BotaoAdicionar = QPushButton(self)
         self.BotaoEditar = QPushButton(self)
@@ -36,24 +39,24 @@ class JANELA(QMainWindow):
         self.LayoutQuadro.addWidget(self.BotaoExcluir, 0, 3, 1, 1)
         self.LayoutQuadro.addWidget(self.BotaoPesquisar, 0, 4, 1, 1)
         self.LayoutQuadro.addWidget(self.CTPesquisa, 0, 5, 1, 1)
-        # Paginas
+
+        # => Paginas
         self.Paginas = QStackedWidget(self)
         self.LayoutQuadro.addWidget(self.Paginas, 1, 0, 1, 6)
-        # carregar as paginas: INICIO, ADICIONAR, EDITAR
+        # Carregar as paginas: INICIO, ADICIONAR, EDITAR
         self.PaginaInicio = INICIO()
         self.PaginaAdicionar = ADICIONAR()
         self.PaginaEditar = EDITAR()
         self.Paginas.addWidget(self.PaginaInicio.CentroInicio)
         self.Paginas.addWidget(self.PaginaAdicionar.CentroAdicionar)
         self.Paginas.addWidget(self.PaginaEditar.CentroEditar)
-        # funções do programa
+
+        # => Chamando as funções
         self.formatar()
         self.clique()
 
     def formatar(self):
-        widget(self.CentroJanela)
-        # layout(self.LayoutJanela)
-        # layout(self.LayoutQuadro)
+        widget(self.CentroPrincipal)
         frame(self.Quadro, tamfixolarg=500)
         pushbutton(self.BotaoInicio, 'imagens/svg/inicio.svg', (40, 40))
         pushbutton(self.BotaoAdicionar, 'imagens/svg/adicionar.svg', (40, 40))
@@ -73,7 +76,7 @@ class JANELA(QMainWindow):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    jan = JANELA()
+    jan = PRINCIPAL()
     jan.show()
 
     sys.exit(app.exec_())
