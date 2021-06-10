@@ -13,17 +13,17 @@ class DADOS:
                               valor TEXT, datacadastro DATE)""")
         self.Indicador.close()
 
-        self.variaveis = ['', 'vprodutor', 'vquantidade',
-                          'vtipo', 'vvalor', 'vdatacadastro']
+        self.variaveis = ["produto", "quantidade",
+                          "tipo", "valor", "datacadastro"]
 
     def novo(self, dados):
         try:
             self.Conexao = sqlite3.connect("dados.db")
             self.Indicador = self.Conexao.cursor()
-            for indice, variavel in enumerate(self.variaveis):
-                item = dados[indice]
-                self.Indicador.execute(
-                    "INSERT INTO ListarProdutos" + str(variavel) + "VALUES ?", item)
+            self.Indicador.execute(
+                """INSERT INTO ListarProdutos
+                (produto, quantidade, tipo, valor, datacadastro) VALUES
+                (?, ?, ?, ?, ?)""", dados)
             self.Conexao.commit()
             self.Indicador.close()
             self.Conexao.close()
@@ -42,10 +42,3 @@ class DADOS:
             for coluna, valorcoluna in enumerate(valorlinha):
                 tabela.setItem(
                     linha, coluna, QTableWidgetItem(str(valorcoluna)))
-
-
-asd = DADOS()
-
-novodados = ['banana', '3', 'Vender', '7', '12/02/2021']
-
-asd.novo(novodados)
