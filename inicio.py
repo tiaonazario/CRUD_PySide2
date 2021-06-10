@@ -1,4 +1,6 @@
-from PySide2.QtWidgets import QMainWindow, QWidget, QGridLayout, QTableWidget, QApplication
+from dados import DADOS
+from biblioteca.personalizar import table
+from PySide2.QtWidgets import QMainWindow, QWidget, QGridLayout, QTableWidget, QApplication, QAbstractItemView
 import sys
 
 
@@ -14,6 +16,16 @@ class INICIO(QMainWindow):
 
         self.TabelaInicio = QTableWidget(self)
         self.LayoutCentroInicio.addWidget(self.TabelaInicio, 0, 1, 1, 1)
+
+        self.basedados = DADOS()
+        self.formatar()
+        self.carregar()
+
+    def formatar(self):
+        table(self.TabelaInicio)
+
+    def carregar(self):
+        self.basedados.carregar(self.TabelaInicio)
 
 
 if __name__ == "__main__":

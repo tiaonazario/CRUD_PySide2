@@ -10,7 +10,7 @@ class PRINCIPAL(QMainWindow):
     def __init__(self, *args, **kwargs):
         super(PRINCIPAL, self).__init__(*args, **kwargs)
         self.setWindowTitle('Controle de Estoque')  # titulo
-        self.setMinimumSize(500, 400)  # menores dimensões
+        self.setMinimumSize(700, 450)  # menores dimensões
 
         # === === === CORPO DO SOFTWARE === === ===
         self.CentroPrincipal = QWidget(self)  # ferramenta central
@@ -57,7 +57,7 @@ class PRINCIPAL(QMainWindow):
 
     def formatar(self):
         widget(self.CentroPrincipal)
-        frame(self.Quadro, tamfixolarg=500)
+        frame(self.Quadro, tamfixolarg=680)
         pushbutton(self.BotaoInicio, 'imagens/svg/inicio.svg', (40, 40))
         pushbutton(self.BotaoAdicionar, 'imagens/svg/adicionar.svg', (40, 40))
         pushbutton(self.BotaoEditar, 'imagens/svg/editar.svg', (40, 40))
