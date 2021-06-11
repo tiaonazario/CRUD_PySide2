@@ -56,13 +56,18 @@ class PRINCIPAL(QMainWindow):
         self.clique()
 
     def formatar(self):
-        widget(self.CentroPrincipal)
+        # widget(self.CentroPrincipal)
         frame(self.Quadro, tamfixolarg=680)
-        pushbutton(self.BotaoInicio, 'imagens/svg/inicio.svg', (40, 40))
-        pushbutton(self.BotaoAdicionar, 'imagens/svg/adicionar.svg', (40, 40))
-        pushbutton(self.BotaoEditar, 'imagens/svg/editar.svg', (40, 40))
-        pushbutton(self.BotaoExcluir, 'imagens/svg/excluir.svg', (40, 40))
-        pushbutton(self.BotaoPesquisar, 'imagens/svg/pesquisar.svg', (40, 40))
+        pushbutton(self.BotaoInicio, 'imagens/svg/inicio.svg',
+                   (40, 40), borda='None')
+        pushbutton(self.BotaoAdicionar, 'imagens/svg/adicionar.svg',
+                   (40, 40), borda='None')
+        pushbutton(self.BotaoEditar, 'imagens/svg/editar.svg',
+                   (40, 40), borda='None')
+        pushbutton(self.BotaoExcluir, 'imagens/svg/excluir.svg',
+                   (40, 40), borda='None')
+        pushbutton(self.BotaoPesquisar, 'imagens/svg/pesquisar.svg',
+                   (40, 40), borda='None')
         textedit(self.CTPesquisa, (250, 30))
 
     def selpagina(self, indice=0):

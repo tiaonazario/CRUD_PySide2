@@ -48,8 +48,13 @@ class EDITAR(QMainWindow):
         self.formatar()
 
     def formatar(self):
-        widget(self.CentroEditar)
-        label(self.RotuloEditar, tamfixoalt=60, alinhar=Qt.AlignCenter)
+        label(self.RotuloEditar, tamfixoalt=60,
+              alinhar=Qt.AlignCenter, estilo=fonte(tamanho='20pt', estilo='bold'))
+        label(self.RotuloProduto, estilo=fonte(estilo='bold'))
+        label(self.RotuloQuantidade, estilo=fonte(estilo='bold'))
+        label(self.RotuloTipo, estilo=fonte(estilo='bold'))
+        label(self.RotuloValor, estilo=fonte(estilo='bold'))
+        label(self.RotuloData, estilo=fonte(estilo='bold'))
         textedit(self.CTProduto, (250, 30))
         textedit(self.CTQuantidade, (250, 30))
         combobox(self.CBTipo, (250, 30))
