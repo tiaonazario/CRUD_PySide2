@@ -31,11 +31,11 @@ class EDITAR(QMainWindow):
         self.LayoutCentroEditar.addWidget(self.BotaoSalvar, 6, 0, 1, 1)
 
         # => Caixas de texto e listas
-        self.CTProduto = QTextEdit(self)
-        self.CTQuantidade = QTextEdit(self)
+        self.CTProduto = QLineEdit(self)
+        self.CTQuantidade = QLineEdit(self)
         self.CBTipo = QComboBox(self)
-        self.CTValor = QTextEdit(self)
-        self.CTData = QTextEdit(self)
+        self.CTValor = QLineEdit(self)
+        self.CTData = QLineEdit(self)
         self.BotaoLimpar = QPushButton('Limpar', self)
         # Colocar os componentes no LayoutCentroAdicionar
         self.LayoutCentroEditar.addWidget(self.CTProduto, 1, 1, 1, 1)
@@ -55,11 +55,11 @@ class EDITAR(QMainWindow):
         label(self.RotuloTipo, estilo=fonte(estilo='bold'))
         label(self.RotuloValor, estilo=fonte(estilo='bold'))
         label(self.RotuloData, estilo=fonte(estilo='bold'))
-        textedit(self.CTProduto, (250, 30))
-        textedit(self.CTQuantidade, (250, 30))
+        lineedit(self.CTProduto, (250, 30))
+        lineedit(self.CTQuantidade, (250, 30))
         combobox(self.CBTipo, (250, 30))
-        textedit(self.CTValor, (250, 30))
-        textedit(self.CTData, (250, 30))
+        lineedit(self.CTValor, (250, 30))
+        lineedit(self.CTData, (250, 30))
         pushbutton(self.BotaoSalvar, tamfixo=(100, 40))
         pushbutton(self.BotaoLimpar, tamfixo=(100, 40))
 

@@ -27,7 +27,7 @@ class DADOS:
             self.Conexao.commit()
             self.Indicador.close()
             self.Conexao.close()
-            print('Novo produto cadastrado com sucesso')
+            print('Produto cadastrado')
 
         except Exception:
             print('ERRO! Não foi possivel salvar esse produto')
@@ -42,3 +42,16 @@ class DADOS:
             for coluna, valorcoluna in enumerate(valorlinha):
                 tabela.setItem(
                     linha, coluna, QTableWidgetItem(str(valorcoluna)))
+
+    def excluir(self, codigo):
+        try:
+            self.Conexao = sqlite3.connect("dados.db")
+            self.Indicador = self.Conexao.cursor()
+            self.Indicador.execute(
+                "DELETE from ListarProdutos WHERE codigo =" + str(codigo))
+            self.Conexao.commit()
+            self.Indicador.close()
+            self.Conexao.close()
+            print('Produto deletado')
+        except Exception:
+            print('ERRO')

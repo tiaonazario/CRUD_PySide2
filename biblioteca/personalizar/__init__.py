@@ -73,7 +73,7 @@ def table(nome, estilo=fonte()):
                       QHeaderView::section:vertical {border: 1px #FFEB4D}''') """
 
 
-def textedit(nome, tamfixo='', estilo=fonte()):
+def lineedit(nome, tamfixo='', estilo=fonte()):
     if tamfixo != '':
         nome.setFixedSize(tamfixo[0], tamfixo[1])
     nome.setStyleSheet(estilo)

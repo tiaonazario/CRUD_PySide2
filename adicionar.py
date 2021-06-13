@@ -1,3 +1,5 @@
+from dados import DADOS
+from biblioteca.funcoes import *
 from PySide2.QtWidgets import *
 from biblioteca import *
 import sys
@@ -31,11 +33,11 @@ class ADICIONAR(QMainWindow):
         self.LayoutCentroAdicionar.addWidget(self.BotaoSalvar, 6, 0, 1, 1)
 
         # => Caixas de texto e listas
-        self.CTProduto = QTextEdit(self)
-        self.CTQuantidade = QTextEdit(self)
+        self.CTProduto = QLineEdit(self)
+        self.CTQuantidade = QLineEdit(self)
         self.CBTipo = QComboBox(self)
-        self.CTValor = QTextEdit(self)
-        self.CTData = QTextEdit(self)
+        self.CTValor = QLineEdit(self)
+        self.CTData = QLineEdit(self)
         self.BotaoLimpar = QPushButton('Limpar', self)
         # Colocar os componentes no LayoutCentroAdicionar
         self.LayoutCentroAdicionar.addWidget(self.CTProduto, 1, 1, 1, 1)
@@ -46,6 +48,7 @@ class ADICIONAR(QMainWindow):
         self.LayoutCentroAdicionar.addWidget(self.BotaoLimpar, 6, 1, 1, 1)
 
         self.formatar()
+        self.clique()
 
     def formatar(self):
         label(self.RotuloAdicionar, tamfixoalt=60,
@@ -55,13 +58,24 @@ class ADICIONAR(QMainWindow):
         label(self.RotuloTipo, estilo=fonte(estilo='bold'))
         label(self.RotuloValor, estilo=fonte(estilo='bold'))
         label(self.RotuloData, estilo=fonte(estilo='bold'))
-        textedit(self.CTProduto, (250, 30))
-        textedit(self.CTQuantidade, (250, 30))
+        lineedit(self.CTProduto, (250, 30))
+        lineedit(self.CTQuantidade, (250, 30))
         combobox(self.CBTipo, (250, 30))
-        textedit(self.CTValor, (250, 30))
-        textedit(self.CTData, (250, 30))
+        lista(['Comprar', 'Vender'], self.CBTipo)
+        lineedit(self.CTValor, (250, 30))
+        lineedit(self.CTData, (250, 30))
         pushbutton(self.BotaoSalvar, tamfixo=(100, 40))
         pushbutton(self.BotaoLimpar, tamfixo=(100, 40))
+
+    def novo(self):
+        matriz = [self.CTProduto, self.CTQuantidade,
+                  self.CBTipo, self.CTValor, self.CTData]
+        variaveis = entradas(matriz)
+        bancodados = DADOS()
+        bancodados.novo(variaveis)
+
+    def clique(self):
+        self.BotaoSalvar.clicked.connect(self.novo)
 
 
 if __name__ == "__main__":

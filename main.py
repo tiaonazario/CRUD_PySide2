@@ -1,4 +1,5 @@
-from PySide2.QtWidgets import QMainWindow, QWidget, QGridLayout, QFrame, QPushButton, QTextEdit, QStackedWidget, QApplication
+from biblioteca.funcoes import excluir
+from PySide2.QtWidgets import QMainWindow, QWidget, QGridLayout, QFrame, QPushButton, QLineEdit, QStackedWidget, QApplication
 import sys
 from biblioteca import *
 from inicio import INICIO
@@ -31,7 +32,7 @@ class PRINCIPAL(QMainWindow):
         self.BotaoEditar = QPushButton(self)
         self.BotaoExcluir = QPushButton(self)
         self.BotaoPesquisar = QPushButton(self)
-        self.CTPesquisa = QTextEdit(self)
+        self.CTPesquisa = QLineEdit(self)
         # Colocar os componentes no LayoutQuadro
         self.LayoutQuadro.addWidget(self.BotaoInicio, 0, 0, 1, 1)
         self.LayoutQuadro.addWidget(self.BotaoAdicionar, 0, 1, 1, 1)
@@ -68,7 +69,7 @@ class PRINCIPAL(QMainWindow):
                    (40, 40), borda='None')
         pushbutton(self.BotaoPesquisar, 'imagens/svg/pesquisar.svg',
                    (40, 40), borda='None')
-        textedit(self.CTPesquisa, (250, 30))
+        lineedit(self.CTPesquisa, (250, 30))
 
     def selpagina(self, indice=0):
         self.Paginas.setCurrentIndex(indice)
@@ -77,6 +78,8 @@ class PRINCIPAL(QMainWindow):
         self.BotaoInicio.clicked.connect(lambda: self.selpagina(0))
         self.BotaoAdicionar.clicked.connect(lambda: self.selpagina(1))
         self.BotaoEditar.clicked.connect(lambda: self.selpagina(2))
+        self.BotaoExcluir.clicked.connect(
+            lambda: excluir(self.PaginaInicio.TabelaInicio))
 
 
 if __name__ == '__main__':
