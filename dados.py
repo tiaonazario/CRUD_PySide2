@@ -43,6 +43,35 @@ class DADOS:
                 tabela.setItem(
                     linha, coluna, QTableWidgetItem(str(valorcoluna)))
 
+    def editar(self, codigo, dados):
+        try:
+            self.Conexao = sqlite3.connect("dados/bdgeral.db")
+            self.Indicador = self.Conexao.cursor()
+            for indice, valor in enumerate(self.variaveis):
+                dado = dados[valor]
+                self.Indicador.execute("UPDATE ListarProdutos SET " + str(valor) +
+                                       " = ? WHERE codigo = ?", (dado, codigo))
+            self.Conexao.commit()
+            self.Indicador.close()
+            self.Conexao.close()
+            print("Dados editados com sucesso")
+        except Exception:
+            print("ERRO!")
+
+    def visualizar(self, codigo):
+        try:
+            self.Conexao = sqlite3.connect("dados/bdgeral.db")
+            self.Indicador = self.Conexao.cursor()
+            resultado = self.Indicador.execute(
+                "SELECT * from ListarProdutos WHERE codigo =" + str(codigo))
+            encontrado = resultado.fetchone()
+            self.Conexao.commit()
+            self.Indicador.close()
+            self.Conexao.close()
+            return encontrado
+        except Exception:
+            print("ERRO!")
+
     def excluir(self, codigo):
         try:
             self.Conexao = sqlite3.connect("dados.db")
@@ -55,3 +84,24 @@ class DADOS:
             print('Produto deletado')
         except Exception:
             print('ERRO')
+
+    def pesquisar(self, nome, tabela):
+        try:
+            self.Conexao = sqlite3.connect("dados.db")
+            self.Indicador = self.Conexao.cursor()
+            resultado = self.Indicador.execute(
+                "SELECT * FROM ListarProdutos WHERE produto LIKE '%" + nome + "%' ")
+
+            tabela.setRowCount(0)
+            for linha, linhavalor in enumerate(resultado):
+                tabela.insertRow(linha)
+                for coluna, colunavalor in enumerate(linhavalor):
+                    tabela.setItem(linha, coluna,
+                                   QTableWidgetItem(str(colunavalor)))
+
+            self.Conexao.commit()
+            self.Indicador.close()
+            self.Conexao.close()
+
+        except Exception:
+            print("ERRO!\nNão foi possivel realisar a pesquisa.")

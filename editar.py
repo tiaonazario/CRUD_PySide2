@@ -1,3 +1,5 @@
+from dados import DADOS
+from biblioteca.funcoes import *
 from PySide2.QtWidgets import *
 from biblioteca import *
 import sys
@@ -62,6 +64,16 @@ class EDITAR(QMainWindow):
         lineedit(self.CTData, (250, 30))
         pushbutton(self.BotaoSalvar, tamfixo=(100, 40))
         pushbutton(self.BotaoLimpar, tamfixo=(100, 40))
+
+    def editar(self):
+        matriz = [self.CTProduto, self.CTQuantidade,
+                  self.CBTipo, self.CTValor, self.CTData]
+        variaveis = entradas(matriz)
+        bancodados = DADOS()
+        bancodados.editar(codigo(self.PaginaInicio.TabelaInicio), variaveis)
+
+    def clique(self):
+        self.BotaoSalvar.clicked.connect(self.editar)
 
 
 if __name__ == "__main__":

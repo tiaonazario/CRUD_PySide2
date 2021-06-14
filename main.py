@@ -1,4 +1,5 @@
-from biblioteca.funcoes import excluir
+from dados import DADOS
+from biblioteca.funcoes import atualizar, entradas, excluir
 from PySide2.QtWidgets import QMainWindow, QWidget, QGridLayout, QFrame, QPushButton, QLineEdit, QStackedWidget, QApplication
 import sys
 from biblioteca import *
@@ -74,12 +75,22 @@ class PRINCIPAL(QMainWindow):
     def selpagina(self, indice=0):
         self.Paginas.setCurrentIndex(indice)
 
+    def abririnicio(self):
+        self.selpagina(0)
+        atualizar(self.PaginaInicio.TabelaInicio)
+
+    def pesquisarproduto(self):
+        nomeproduto = str(entradas([self.CTPesquisa])[0])
+        bancodados = DADOS()
+        bancodados.pesquisar(nomeproduto, self.PaginaInicio.TabelaInicio)
+
     def clique(self):
-        self.BotaoInicio.clicked.connect(lambda: self.selpagina(0))
+        self.BotaoInicio.clicked.connect(self.abririnicio)
         self.BotaoAdicionar.clicked.connect(lambda: self.selpagina(1))
         self.BotaoEditar.clicked.connect(lambda: self.selpagina(2))
         self.BotaoExcluir.clicked.connect(
             lambda: excluir(self.PaginaInicio.TabelaInicio))
+        self.BotaoPesquisar.clicked.connect(self.pesquisarproduto)
 
 
 if __name__ == '__main__':

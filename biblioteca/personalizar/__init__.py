@@ -45,6 +45,7 @@ def pushbutton(nome, icone='', tamfixo='', estilo=fonte(), borda=''):
     if icone != '':
         nome.setIcon(QIcon(icone))
     nome.setStyleSheet(f'{estilo} border:{borda};')
+    nome.setCursor(Qt.OpenHandCursor)
 
 
 def table(nome, estilo=fonte()):

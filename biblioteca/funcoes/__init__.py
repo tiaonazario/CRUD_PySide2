@@ -29,14 +29,21 @@ def entradas(valores):
         print('ERRO! VERIFIQUE A FUNÇÃO produto')
 
 
-def excluir(ferramenta):
+def codigo(ferramenta):
     try:
         codigo = ferramenta.currentRow()
         if codigo >= 0:
             novocodigo = ferramenta.item(codigo, 0).text()
         else:
             novocodigo = 0
-        novocodigo = int(novocodigo)
+        return int(novocodigo)
+    except Exception:
+        pass
+
+
+def excluir(ferramenta):
+    try:
+        novocodigo = codigo(ferramenta)
         if novocodigo == 0:
             print("Selecione um cliente na tabela")
         else:

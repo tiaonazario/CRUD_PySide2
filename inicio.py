@@ -26,7 +26,6 @@ class INICIO(QMainWindow):
 
     def carregar(self):
         atualizar(self.TabelaInicio)
-        # self.basedados.carregar(self.TabelaInicio)
 
 
 if __name__ == "__main__":
