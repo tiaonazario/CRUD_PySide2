@@ -22,7 +22,7 @@ class EDITAR(QMainWindow):
         self.RotuloTipo = QLabel('Tipo', self)
         self.RotuloValor = QLabel('Valor', self)
         self.RotuloData = QLabel('Data', self)
-        self.BotaoSalvar = QPushButton('Salvar', self)
+        self.BotaoEditar = QPushButton('Editar', self)
         # Colocar os componentes no LayoutCentroAdicionar
         self.LayoutCentroEditar.addWidget(self.RotuloEditar, 0, 0, 1, 2)
         self.LayoutCentroEditar.addWidget(self.RotuloProduto, 1, 0, 1, 1)
@@ -30,8 +30,10 @@ class EDITAR(QMainWindow):
         self.LayoutCentroEditar.addWidget(self.RotuloTipo, 3, 0, 1, 1)
         self.LayoutCentroEditar.addWidget(self.RotuloValor, 4, 0, 1, 1)
         self.LayoutCentroEditar.addWidget(self.RotuloData, 5, 0, 1, 1)
-        self.LayoutCentroEditar.addWidget(self.BotaoSalvar, 6, 0, 1, 1)
+        self.LayoutCentroEditar.addWidget(self.BotaoEditar, 6, 0, 1, 1)
 
+        # => Código do produto
+        self.Codigo = ''
         # => Caixas de texto e listas
         self.CTProduto = QLineEdit(self)
         self.CTQuantidade = QLineEdit(self)
@@ -48,6 +50,7 @@ class EDITAR(QMainWindow):
         self.LayoutCentroEditar.addWidget(self.BotaoLimpar, 6, 1, 1, 1)
 
         self.formatar()
+        self.clique()
 
     def formatar(self):
         label(self.RotuloEditar, tamfixoalt=60,
@@ -60,20 +63,27 @@ class EDITAR(QMainWindow):
         lineedit(self.CTProduto, (250, 30))
         lineedit(self.CTQuantidade, (250, 30))
         combobox(self.CBTipo, (250, 30))
+        lista(['Comprar', 'Vender'], self.CBTipo)
         lineedit(self.CTValor, (250, 30))
         lineedit(self.CTData, (250, 30))
-        pushbutton(self.BotaoSalvar, tamfixo=(100, 40))
+        pushbutton(self.BotaoEditar, tamfixo=(100, 40))
         pushbutton(self.BotaoLimpar, tamfixo=(100, 40))
 
-    def editar(self):
+    def editarproduto(self):
         matriz = [self.CTProduto, self.CTQuantidade,
                   self.CBTipo, self.CTValor, self.CTData]
-        variaveis = entradas(matriz)
-        bancodados = DADOS()
-        bancodados.editar(codigo(self.PaginaInicio.TabelaInicio), variaveis)
+        variaveis = obter(matriz)
+        print(variaveis)
+        editar(self.Codigo, variaveis)
+
+    def limparcampos(self):
+        matriz = [self.CTProduto, self.CTQuantidade,
+                  self.CBTipo, self.CTValor, self.CTData]
+        definir(matriz, ['', '', '', '', '', ''])
 
     def clique(self):
-        self.BotaoSalvar.clicked.connect(self.editar)
+        self.BotaoEditar.clicked.connect(self.editarproduto)
+        self.BotaoLimpar.clicked.connect(self.limparcampos)
 
 
 if __name__ == "__main__":

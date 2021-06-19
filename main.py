@@ -1,5 +1,5 @@
 from dados import DADOS
-from biblioteca.funcoes import atualizar, entradas, excluir
+from biblioteca.funcoes import atualizar, codigo, definir, excluir, obter, pesquisar, visualizar
 from PySide2.QtWidgets import QMainWindow, QWidget, QGridLayout, QFrame, QPushButton, QLineEdit, QStackedWidget, QApplication
 import sys
 from biblioteca import *
@@ -75,19 +75,46 @@ class PRINCIPAL(QMainWindow):
     def selpagina(self, indice=0):
         self.Paginas.setCurrentIndex(indice)
 
+    def ocultarbotao(self, ocultar):
+        try:
+            botao = [self.BotaoInicio, self.BotaoAdicionar, self.BotaoEditar,
+                     self.BotaoExcluir, self.BotaoPesquisar, self.CTPesquisa]
+            for indice, valor in enumerate(ocultar):
+                if valor.lower() == "s":
+                    botao[indice].setVisible(False)
+                else:
+                    botao[indice].setVisible(True)
+        except Exception:
+            print("ERRO! Não foi possível ocultar o botao")
+
     def abririnicio(self):
+        self.ocultarbotao(['N', 'N', 'N', 'N', 'N', 'N'])
         self.selpagina(0)
         atualizar(self.PaginaInicio.TabelaInicio)
 
+    def abriradicionar(self):
+        self.selpagina(1)
+        self.ocultarbotao(['N', 'N', 'S', 'S', 'S', 'S'])
+
+    def abrireditar(self):
+        codigoproduto = codigo(self.PaginaInicio.TabelaInicio)
+        self.ocultarbotao(['N', 'S', 'N', 'S', 'S', 'S'])
+        self.PaginaEditar.Codigo = codigoproduto
+        ferramentas = [self.PaginaEditar.CTProduto,
+                       self.PaginaEditar.CTQuantidade, self.PaginaEditar.CBTipo,
+                       self.PaginaEditar.CTValor, self.PaginaEditar.CTData]
+        valores = visualizar(codigoproduto)
+        definir(ferramentas, valores)
+        self.selpagina(2)
+
     def pesquisarproduto(self):
-        nomeproduto = str(entradas([self.CTPesquisa])[0])
-        bancodados = DADOS()
-        bancodados.pesquisar(nomeproduto, self.PaginaInicio.TabelaInicio)
+        nomeproduto = str(obter([self.CTPesquisa])[0])
+        pesquisar(nomeproduto, self.PaginaInicio.TabelaInicio)
 
     def clique(self):
         self.BotaoInicio.clicked.connect(self.abririnicio)
-        self.BotaoAdicionar.clicked.connect(lambda: self.selpagina(1))
-        self.BotaoEditar.clicked.connect(lambda: self.selpagina(2))
+        self.BotaoAdicionar.clicked.connect(self.abriradicionar)
+        self.BotaoEditar.clicked.connect(self.abrireditar)
         self.BotaoExcluir.clicked.connect(
             lambda: excluir(self.PaginaInicio.TabelaInicio))
         self.BotaoPesquisar.clicked.connect(self.pesquisarproduto)

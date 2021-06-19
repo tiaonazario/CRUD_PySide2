@@ -45,10 +45,10 @@ class DADOS:
 
     def editar(self, codigo, dados):
         try:
-            self.Conexao = sqlite3.connect("dados/bdgeral.db")
+            self.Conexao = sqlite3.connect("dados.db")
             self.Indicador = self.Conexao.cursor()
             for indice, valor in enumerate(self.variaveis):
-                dado = dados[valor]
+                dado = dados[indice]
                 self.Indicador.execute("UPDATE ListarProdutos SET " + str(valor) +
                                        " = ? WHERE codigo = ?", (dado, codigo))
             self.Conexao.commit()
@@ -56,11 +56,11 @@ class DADOS:
             self.Conexao.close()
             print("Dados editados com sucesso")
         except Exception:
-            print("ERRO!")
+            print("ERRO! Não foi possivel editar esse produto.")
 
     def visualizar(self, codigo):
         try:
-            self.Conexao = sqlite3.connect("dados/bdgeral.db")
+            self.Conexao = sqlite3.connect("dados.db")
             self.Indicador = self.Conexao.cursor()
             resultado = self.Indicador.execute(
                 "SELECT * from ListarProdutos WHERE codigo =" + str(codigo))
@@ -70,7 +70,7 @@ class DADOS:
             self.Conexao.close()
             return encontrado
         except Exception:
-            print("ERRO!")
+            print("ERRO! Não foi possivel visualizar os dados")
 
     def excluir(self, codigo):
         try:

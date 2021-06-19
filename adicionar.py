@@ -67,15 +67,20 @@ class ADICIONAR(QMainWindow):
         pushbutton(self.BotaoSalvar, tamfixo=(100, 40))
         pushbutton(self.BotaoLimpar, tamfixo=(100, 40))
 
-    def novo(self):
+    def salvarproduto(self):
         matriz = [self.CTProduto, self.CTQuantidade,
                   self.CBTipo, self.CTValor, self.CTData]
-        variaveis = entradas(matriz)
-        bancodados = DADOS()
-        bancodados.novo(variaveis)
+        variaveis = obter(matriz)
+        salvar(variaveis)
+
+    def limparcampos(self):
+        matriz = [self.CTProduto, self.CTQuantidade,
+                  self.CBTipo, self.CTValor, self.CTData]
+        definir(matriz, ['', '', '', '', '', ''])
 
     def clique(self):
-        self.BotaoSalvar.clicked.connect(self.novo)
+        self.BotaoSalvar.clicked.connect(self.salvarproduto)
+        self.BotaoLimpar.clicked.connect(self.limparcampos)
 
 
 if __name__ == "__main__":
