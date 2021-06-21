@@ -1,7 +1,7 @@
 from biblioteca.funcoes import atualizar
-from dados import DADOS
 from biblioteca.personalizar import table
-from PySide2.QtWidgets import QMainWindow, QWidget, QGridLayout, QTableWidget, QApplication, QAbstractItemView
+from PySide2.QtWidgets import QMainWindow, QWidget, QGridLayout, QTableWidget, QApplication
+from PySide2.QtCore import *
 import sys
 
 

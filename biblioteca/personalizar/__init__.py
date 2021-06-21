@@ -38,13 +38,13 @@ def layout(nome, margem=0, espaco=0):
     nome.setSpacing(espaco)
 
 
-def pushbutton(nome, icone='', tamfixo='', estilo=fonte(), borda=''):
+def pushbutton(nome, icone='', tamfixo='', estilo=fonte(), borda='', fundo=''):
     if tamfixo != '':
         nome.setFixedSize(tamfixo[0], tamfixo[1])
         nome.setIconSize(QSize(tamfixo[0], tamfixo[1]))
     if icone != '':
         nome.setIcon(QIcon(icone))
-    nome.setStyleSheet(f'{estilo} border:{borda};')
+    nome.setStyleSheet(f'{estilo} border:{borda}; background-color:{fundo};')
     nome.setCursor(Qt.OpenHandCursor)
 
 

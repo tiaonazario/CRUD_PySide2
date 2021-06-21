@@ -1,8 +1,9 @@
-from dados import DADOS
 from biblioteca.funcoes import atualizar, codigo, definir, excluir, obter, pesquisar, visualizar
 from PySide2.QtWidgets import QMainWindow, QWidget, QGridLayout, QFrame, QPushButton, QLineEdit, QStackedWidget, QApplication
+from PySide2.QtGui import QIcon
+from PySide2.QtCore import *
 import sys
-from biblioteca import *
+from biblioteca.personalizar import frame, pushbutton, lineedit
 from inicio import INICIO
 from adicionar import ADICIONAR
 from editar import EDITAR
@@ -13,6 +14,7 @@ class PRINCIPAL(QMainWindow):
         super(PRINCIPAL, self).__init__(*args, **kwargs)
         self.setWindowTitle('Controle de Estoque')  # titulo
         self.setMinimumSize(700, 450)  # menores dimensões
+        self.setWindowIcon(QIcon('imagens/svg/icone.svg'))
 
         # === === === CORPO DO SOFTWARE === === ===
         self.CentroPrincipal = QWidget(self)  # ferramenta central
@@ -81,9 +83,9 @@ class PRINCIPAL(QMainWindow):
                      self.BotaoExcluir, self.BotaoPesquisar, self.CTPesquisa]
             for indice, valor in enumerate(ocultar):
                 if valor.lower() == "s":
-                    botao[indice].setVisible(False)
+                    botao[indice].setEnabled(False)
                 else:
-                    botao[indice].setVisible(True)
+                    botao[indice].setEnabled(True)
         except Exception:
             print("ERRO! Não foi possível ocultar o botao")
 
@@ -97,15 +99,20 @@ class PRINCIPAL(QMainWindow):
         self.ocultarbotao(['N', 'N', 'S', 'S', 'S', 'S'])
 
     def abrireditar(self):
+        self.PaginaEditar.Codigo = ''
         codigoproduto = codigo(self.PaginaInicio.TabelaInicio)
-        self.ocultarbotao(['N', 'S', 'N', 'S', 'S', 'S'])
-        self.PaginaEditar.Codigo = codigoproduto
-        ferramentas = [self.PaginaEditar.CTProduto,
-                       self.PaginaEditar.CTQuantidade, self.PaginaEditar.CBTipo,
-                       self.PaginaEditar.CTValor, self.PaginaEditar.CTData]
-        valores = visualizar(codigoproduto)
-        definir(ferramentas, valores)
-        self.selpagina(2)
+        print(codigoproduto)
+        if codigoproduto != '' and codigoproduto != None and codigoproduto != 0:
+            self.ocultarbotao(['N', 'S', 'N', 'S', 'S', 'S'])
+            self.PaginaEditar.Codigo = codigoproduto
+            ferramentas = [self.PaginaEditar.CTProduto,
+                           self.PaginaEditar.CTQuantidade, self.PaginaEditar.CBTipo,
+                           self.PaginaEditar.CTValor, self.PaginaEditar.CTData]
+            valores = visualizar(codigoproduto)
+            definir(ferramentas, valores)
+            self.selpagina(2)
+        else:
+            print("ERRO! Selecione um produto na tabela.")
 
     def pesquisarproduto(self):
         nomeproduto = str(obter([self.CTPesquisa])[0])

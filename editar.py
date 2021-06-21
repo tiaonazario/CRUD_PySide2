@@ -1,7 +1,7 @@
-from dados import DADOS
-from biblioteca.funcoes import *
+from biblioteca.funcoes import lista, atualizar, obter, definir, salvar, codigo, visualizar, editar, excluir, pesquisar
+from biblioteca.personalizar import fonte, combobox, frame, label, layout, pushbutton, table, lineedit
 from PySide2.QtWidgets import *
-from biblioteca import *
+from PySide2.QtCore import *
 import sys
 
 
