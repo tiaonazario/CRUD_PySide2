@@ -12,7 +12,7 @@ from editar import EDITAR
 class PRINCIPAL(QMainWindow):
     def __init__(self, *args, **kwargs):
         super(PRINCIPAL, self).__init__(*args, **kwargs)
-        self.setWindowTitle('Controle de Estoque')  # titulo
+        self.setWindowTitle("Sistema de Cadastro - CRUD")  # titulo
         self.setMinimumSize(700, 450)  # menores dimensões
         self.setWindowIcon(QIcon('imagens/svg/icone.svg'))
 
