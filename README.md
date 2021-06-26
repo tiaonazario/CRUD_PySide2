@@ -4,8 +4,12 @@
 
 # Sistema de Cadastro - CRUD em Python / PySide2
 
-Esse sistema tem a função de trabalhar com as as 4 principais funções do banco de dados SQLite3.
-* C => Create
-* R => Read
-* U => Update
-* D => Delete
+Sistema de cadastro de produtos desenvolvido em Python usando as bibliotecas PySide2 e SqLite3 (biblioteca padrão).
+Esse sistema foi criado para demostrar as 4 principais operações do SqLite3, em uma interface feita com PySide2.
+
+O famoso CRUD
+* Create ⇒ Criar ou adicionar novas entradas
+* Read ⇒ Ler, recuperar ou ver entradas existentes
+* Update ⇒ Atualizar ou editar entradas existentes
+* Delete ⇒ Remover entradas existentes
+
