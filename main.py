@@ -14,7 +14,7 @@ class PRINCIPAL(QMainWindow):
         super(PRINCIPAL, self).__init__(*args, **kwargs)
         self.setWindowTitle("Sistema de Cadastro - CRUD")  # titulo
         self.setMinimumSize(700, 450)  # menores dimensões
-        self.setWindowIcon(QIcon('imagens/svg/icone.svg'))
+        self.setWindowIcon(QIcon('imagens/svg/logo.svg'))
 
         # === === === CORPO DO SOFTWARE === === ===
         self.CentroPrincipal = QWidget(self)  # ferramenta central
