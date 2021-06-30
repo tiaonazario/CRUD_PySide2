@@ -4,6 +4,8 @@
 
 # Sistema de Cadastro - CRUD em Python / PySide2
 
+![](https://github.com/tiaonazario/SistemaCadastro_CRUD_PySide2/blob/main/imagens/png/paginaincial.png)
+
 Sistema de cadastro de produtos desenvolvido em Python usando as bibliotecas PySide2 e SqLite3 (biblioteca padrão).
 Esse sistema foi criado para demostrar as 4 principais operações do SqLite3, em uma interface feita com PySide2.
 
