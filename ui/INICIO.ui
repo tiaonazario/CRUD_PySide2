@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>INICIO</class>
+ <widget class="QMainWindow" name="INICIO">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>600</width>
+    <height>400</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="CetroInicio">
+   <property name="font">
+    <font>
+     <family>MS Sans Serif</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(27, 27, 27);
+color: #009688;
+</string>
+   </property>
+   <layout class="QHBoxLayout" name="LHInicio">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QFrame" name="FrameTabela">
+      <property name="minimumSize">
+       <size>
+        <width>505</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>505</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>MS Sans Serif</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QVBoxLayout" name="LVTabela">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QTableWidget" name="TabelaInicio">
+         <property name="font">
+          <font>
+           <family>MS Sans Serif</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <attribute name="horizontalHeaderVisible">
+          <bool>true</bool>
+         </attribute>
+         <attribute name="horizontalHeaderHighlightSections">
+          <bool>true</bool>
+         </attribute>
+         <attribute name="verticalHeaderVisible">
+          <bool>false</bool>
+         </attribute>
+         <row>
+          <property name="text">
+           <string>1</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>2</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>3</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>4</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>5</string>
+          </property>
+         </row>
+         <column>
+          <property name="text">
+           <string>ID</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>PRODUTO</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>TIPO</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>VALOR</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>DATA</string>
+          </property>
+         </column>
+         <item row="0" column="0">
+          <property name="text">
+           <string>0001</string>
+          </property>
+         </item>
+         <item row="0" column="1">
+          <property name="text">
+           <string>Painel Fotovoltaico</string>
+          </property>
+         </item>
+         <item row="0" column="2">
+          <property name="text">
+           <string>Conjunto de paineis fotovoltaico</string>
+          </property>
+         </item>
+         <item row="0" column="3">
+          <property name="text">
+           <string>8</string>
+          </property>
+         </item>
+         <item row="0" column="4">
+          <property name="text">
+           <string>1000</string>
+          </property>
+         </item>
+         <item row="1" column="0">
+          <property name="text">
+           <string>0002</string>
+          </property>
+         </item>
+         <item row="1" column="1">
+          <property name="text">
+           <string>Lâmpada LED</string>
+          </property>
+         </item>
+         <item row="1" column="2">
+          <property name="text">
+           <string>Lâmpadas para as ares da casa</string>
+          </property>
+         </item>
+         <item row="1" column="3">
+          <property name="text">
+           <string>14</string>
+          </property>
+         </item>
+         <item row="1" column="4">
+          <property name="text">
+           <string>14</string>
+          </property>
+         </item>
+         <item row="2" column="0">
+          <property name="text">
+           <string>0003</string>
+          </property>
+         </item>
+         <item row="2" column="1">
+          <property name="text">
+           <string>Interruptor</string>
+          </property>
+         </item>
+         <item row="2" column="2">
+          <property name="text">
+           <string>Equipamento para ligação das lâmpadas da casa</string>
+          </property>
+         </item>
+         <item row="2" column="3">
+          <property name="text">
+           <string>26</string>
+          </property>
+         </item>
+         <item row="2" column="4">
+          <property name="text">
+           <string>16</string>
+          </property>
+         </item>
+         <item row="3" column="0">
+          <property name="text">
+           <string>0004</string>
+          </property>
+         </item>
+         <item row="3" column="1">
+          <property name="text">
+           <string>Tomada</string>
+          </property>
+         </item>
+         <item row="3" column="2">
+          <property name="text">
+           <string>Equipamento para ligação dos aparelhos a energia</string>
+          </property>
+         </item>
+         <item row="3" column="3">
+          <property name="text">
+           <string>43</string>
+          </property>
+         </item>
+         <item row="3" column="4">
+          <property name="text">
+           <string>21</string>
+          </property>
+         </item>
+         <item row="4" column="0">
+          <property name="text">
+           <string>0005</string>
+          </property>
+         </item>
+         <item row="4" column="1">
+          <property name="text">
+           <string>Inversor</string>
+          </property>
+         </item>
+         <item row="4" column="2">
+          <property name="text">
+           <string>Equipamento que inverte o sinal de DC para AC</string>
+          </property>
+         </item>
+         <item row="4" column="3">
+          <property name="text">
+           <string>3</string>
+          </property>
+         </item>
+         <item row="4" column="4">
+          <property name="text">
+           <string>25000</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
